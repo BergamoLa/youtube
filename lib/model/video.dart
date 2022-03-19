@@ -20,7 +20,7 @@ late String? imagem;
      id:  json['id']['videoId'].toString(),
      descricao: json['snippet']['description'],
      imagem:  json['snippet']['thumbnails']['high'] ['url'],
-     canal: json["snippet"]['channelId'],
+     canal: json["snippet"]['channelTitle'],
    );
  }
 

@@ -9,8 +9,8 @@ import 'model/video.dart';
 const CHAVE_API = "AIzaSyBxeBBYeXQomV4sD1ZNn6ipgbSK_-ed84k";
 const ID_CANAL = "UCVHFbqXqoYvEWM1Ddxl0QDg";
 String pesquisa = "";
-var url = Uri.parse(
-    "https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&maxResults=20&order=date&key=$CHAVE_API&channelId=$ID_CANAL&q=$pesquisa");
+var url = Uri.parse("search?part=snippet&type=video&maxResults=20&order=date&key=$CHAVE_API&channelId=$ID_CANAL&q=$pesquisa");
+
 
 class Api {
   Future <List<Video>> pesquisar (String pesquisa) async {

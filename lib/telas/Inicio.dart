@@ -3,25 +3,27 @@ import 'package:youtube/Api.dart';
 import 'package:youtube/model/video.dart';
 
 class Inicio extends StatefulWidget {
-  const Inicio({Key? key}) : super(key: key);
 
+  String pesquisa;
+ Inicio({Key? key, required this.pesquisa}) : super(key: key);
   @override
   _InicioState createState() => _InicioState();
+
 }
 
 class _InicioState extends State<Inicio> {
 
-  _loadData(){
-    Future <List<Video>>? videos;
+  _loadData(String pesquisa){
     Api api = Api();
-    videos = api.pesquisar(pesquisa) as Future<List<Video>>?;
-    return videos;
+    return api.pesquisar(pesquisa);
+
+
   }
   @override
   Widget build(BuildContext context) {
 
     return FutureBuilder(
-        future: _loadData(),
+        future: _loadData(widget.pesquisa),
         builder: (BuildContext ctx, AsyncSnapshot<List<Video>> snapshot) =>
         snapshot.hasData
             ? ListView.builder(
@@ -43,12 +45,11 @@ class _InicioState extends State<Inicio> {
                 ),
                 ListTile(
                   title: Text(video.titulo.toString()),
-                  subtitle: Text(video.descricao.toString()),
+                  subtitle: Text(video.canal.toString()),
                 ),
               ],
             );
           },
-
 
         )
             : Center(
